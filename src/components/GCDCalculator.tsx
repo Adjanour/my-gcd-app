@@ -58,7 +58,7 @@ const GCDCalculator: React.FC<GCDCalculatorProps> = () => {
       
       <button onClick={calculateGCD}>Calculate GCD</button>
       {showClearButton && <button onClick={clear}>Clear</button>}
-      {gcd !== null && <p>The GCD is: {gcd}</p>}
+      {gcd !== null && <h3>The GCD is: {gcd}</h3>}
       {/* {
         steps.map((step, index) => (
           <StepDisplay step={step} key={index} />

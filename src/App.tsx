@@ -29,6 +29,9 @@ const App: React.FC = () => {
       <main>
         <GCDCalculator />
       </main>
+      <footer className="app-footer">
+        <p>© Africoda Tech 2024</p>
+      </footer>
     </div>
   );
 };

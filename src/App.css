@@ -1,7 +1,7 @@
 
 :root {
   --bg-color: #fff; /* Light theme background */
-  --text-color: #000; /* Light theme text */
+  --text-color: #003f45; /* Light theme text */
   --input-bg: #f0f0f0; /* Light theme input background */
   --button-bg: #d4d4d4; /* Light theme button background */
   --table-border: #ddd; /* Light theme table border */
@@ -13,6 +13,7 @@
   --text-color: #eee;
   --input-bg: #333;
   --button-bg: #555;
+  --button-color: #181818; 
   --table-border: #444;
 }
 
@@ -21,13 +22,16 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
+body{
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
 
-
-/* ...rest of your existing CSS... */
-
-button + button { /* Styles the button next to "Calculate GCD" */
+button + button {
   margin-left: 10px;
 }
 .container {
@@ -53,10 +57,10 @@ input[type="number"] {
 }
 
 button {
+  background-color: var(--button-bg);
+  color: var(--button-color);
   padding: 10px 20px;
   width: 200px;
-  background-color: #d4d4d4;
-  color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -77,4 +81,18 @@ td, th {
 
 p {
   margin-top: 20px;
+}
+
+.app-footer {
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  padding: 15px;
+  background-color: var(--bg-color); /* Match footer color to the theme */
+  color: var(--text-color);
+  font-size: 24px;
+  text-align: center;
+  left: 0;
+  bottom: 0;
+  width: 100%; 
 }
