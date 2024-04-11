@@ -1,7 +1,7 @@
 import React from 'react';
 import GCDCalculator from './components/GCDCalculator';
 import './App.css';
-import StepDisplay from './components/StepDisplay';
+
 
 const App: React.FC = () => {
   return (

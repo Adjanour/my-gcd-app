@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import StepDisplay from "./StepDisplay";
+
 
 interface GCDCalculatorProps {}
 
