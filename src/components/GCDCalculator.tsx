@@ -11,6 +11,8 @@ const GCDCalculator: React.FC<GCDCalculatorProps> = () => {
     Array<{ a: number; b: number; q: number; r: number }>
   >([]);
 
+  const [showClearButton, setShowClearButton] = useState(false);
+
   const calculateGCD = () => {
     let a = number1;
     let b = number2;
@@ -26,6 +28,15 @@ const GCDCalculator: React.FC<GCDCalculatorProps> = () => {
 
     setGcd(a);
     setSteps(calculationSteps);
+    setShowClearButton(true);
+  };
+
+  const clear = () => {
+    setNumber1(0);
+    setNumber2(0);
+    setGcd(null);
+    setSteps([]);
+    setShowClearButton(false);
   };
 
   return (
@@ -44,7 +55,9 @@ const GCDCalculator: React.FC<GCDCalculatorProps> = () => {
           onChange={(e) => setNumber2(parseInt(e.target.value, 10))}
         />
       </div>
+      
       <button onClick={calculateGCD}>Calculate GCD</button>
+      {showClearButton && <button onClick={clear}>Clear</button>}
       {gcd !== null && <p>The GCD is: {gcd}</p>}
       {/* {
         steps.map((step, index) => (
