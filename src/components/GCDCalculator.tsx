@@ -1,7 +1,13 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import HistoryComponent from "./HistoryComponent";
 
 interface GCDCalculatorProps {}
+interface CalculationHistoryItem {
+  number1: number;
+  number2: number;
+  gcd: number;
+  steps: Array<{ a: number; b: number; q: number; r: number }>;
+}
 
 const GCDCalculator: React.FC<GCDCalculatorProps> = () => {
   const [number1, setNumber1] = useState<number>(0);
@@ -10,13 +16,21 @@ const GCDCalculator: React.FC<GCDCalculatorProps> = () => {
   const [steps, setSteps] = useState<
     Array<{ a: number; b: number; q: number; r: number }>
   >([]);
+  const [history, setHistory] = useState<CalculationHistoryItem[]>([]);
 
   const [showClearButton, setShowClearButton] = useState(false);
+
+  useEffect(() => {
+    const storedHistory = localStorage.getItem("calculationHistory");
+    if (storedHistory) {
+      setHistory(JSON.parse(storedHistory));
+    }
+  }, []); // Empty dependency array: runs only on component mount
 
   const calculateGCD = () => {
     let a = number1;
     let b = number2;
-    const calculationSteps = [];
+    const calculationSteps: Array<{ a: number; b: number; q: number; r: number }> = [];
 
     while (b !== 0) {
       const q = Math.floor(a / b);
@@ -29,6 +43,20 @@ const GCDCalculator: React.FC<GCDCalculatorProps> = () => {
     setGcd(a);
     setSteps(calculationSteps);
     setShowClearButton(true);
+    if (gcd !== null) {
+      setHistory((prevHistory: CalculationHistoryItem[]) => {
+        const newHistory = [
+          ...prevHistory,
+          { number1, number2, gcd:a, steps: calculationSteps },
+        ];
+        console.log(prevHistory);
+        console.log(newHistory);
+        console.log(JSON.stringify(newHistory));
+
+        localStorage.setItem("calculationHistory", JSON.stringify(newHistory));
+        return newHistory;
+      });
+    }
   };
 
   const clear = () => {
@@ -55,7 +83,7 @@ const GCDCalculator: React.FC<GCDCalculatorProps> = () => {
           onChange={(e) => setNumber2(parseInt(e.target.value, 10))}
         />
       </div>
-      
+
       <button onClick={calculateGCD}>Calculate GCD</button>
       {showClearButton && <button onClick={clear}>Clear</button>}
       {gcd !== null && <h3>The GCD is: {gcd}</h3>}
@@ -93,6 +121,7 @@ const GCDCalculator: React.FC<GCDCalculatorProps> = () => {
           )}
         </div>
       )}
+      <HistoryComponent history={history} setHistory={setHistory} />
     </div>
   );
 };

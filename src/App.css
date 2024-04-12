@@ -96,3 +96,32 @@ p {
   bottom: 0;
   width: 100%; 
 }
+
+
+.history-container div {
+   margin-bottom: 10px; /* Space between calculations */
+}
+
+.history-container {
+  margin-top: 30px; 
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+.history-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.calculation-steps table {
+    width: 100%; 
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.calculation-steps th, .calculation-steps td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
