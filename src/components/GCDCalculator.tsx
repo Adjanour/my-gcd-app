@@ -49,9 +49,6 @@ const GCDCalculator: React.FC<GCDCalculatorProps> = () => {
           ...prevHistory,
           { number1, number2, gcd:a, steps: calculationSteps },
         ];
-        console.log(prevHistory);
-        console.log(newHistory);
-        console.log(JSON.stringify(newHistory));
 
         localStorage.setItem("calculationHistory", JSON.stringify(newHistory));
         return newHistory;
